@@ -2,9 +2,14 @@ import { CategoriesRepository } from "../../repositories/implementations/Categor
 import fs from "fs";
 import csvParser from "csv-parser";
 import { ICreateCategoryDTO } from "../../repositories/ICategoriesRepository";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 class ImportCategoryUseCase {
-	constructor(private categoriesRepository: CategoriesRepository) {}
+	constructor(
+		@inject("CategoriesRepository")
+		private categoriesRepository: CategoriesRepository
+	) {}
 
 	loadCategories(file): Promise<ICreateCategoryDTO[]> {
 		return new Promise((resolve, reject) => {

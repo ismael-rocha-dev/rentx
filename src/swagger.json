@@ -1,74 +1,131 @@
 {
-    "openapi": "3.0.3",
-    "info": {
-        "title": "RentalX documentation",
-        "description": "This is an API to rent vehicles",
-        "version": "1.0.0"
-    },
-    "paths": {
-        "/categories": {
-            "post": {
-                "tags": ["Category"],
-                "summary": "Create a category",
-                "description": "Create a new category",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "description": {
-                                        "type": "string"
-                                    }
-                                },
-                                "example": {
-                                    "name": "Category test name",
-                                    "description": "Description for this category"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Category created"
-                    },
-                    "500": {
-                        "description": "Category already exists"
-                    }
-                }
-            },
-            "get": {
-                "tags": ["Category"],
-                "summary": "List categories",
-                "description": "List all categories",
-                "responses": {
-                    "200": {
-                        "description": "Return a list of categories",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": "string",
-                                            "description": "string"
-                                        }
-                                    },
-                                    "example": {
-                                        "name": "Category test name",
-                                        "description": "Description for this category"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+	"openapi": "3.0.3",
+	"info": {
+		"title": "RentX documentation",
+		"description": "This is an API to rent vehicles",
+		"version": "1.0.0"
+	},
+	"paths": {
+		"/categories": {
+			"post": {
+				"tags": ["Category"],
+				"summary": "Create a category",
+				"description": "Create a new category",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									}
+								},
+								"example": {
+									"name": "category name",
+									"description": "description for this category"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Category created"
+					},
+					"500": {
+						"description": "Category already exists"
+					}
+				}
+			},
+			"get": {
+				"tags": ["Category"],
+				"summary": "List categories",
+				"description": "List all categories",
+				"responses": {
+					"200": {
+						"description": "Return a list of categories",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"name": "string",
+											"description": "string"
+										}
+									},
+									"example": {
+										"name": "Category test name",
+										"description": "Description for this category"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/categories/import": {
+			"post": {
+				"tags": ["Category"],
+				"requestBody": {
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"file": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": "Created"
+				}
+			}
+		},
+		"/specifications": {
+			"post": {
+				"tags": ["specifications"],
+				"summary": "Create a specification",
+				"description": "Creates a new specification",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/definitions/Specification"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"500": {
+						"description": "Specification already exists."
+					}
+				}
+			},
+			"get": {}
+		}
+	},
+	"definitions": {
+		"Specification": {
+			"type": "object",
+			"properties": {
+				"name": "string",
+				"description": "string"
+			}
+		}
+	}
 }
