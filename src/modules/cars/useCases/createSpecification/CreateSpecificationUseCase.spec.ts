@@ -1,6 +1,6 @@
-import { AppError } from "../../../../errors/AppError";
-import { SpecificationsRepositoryInMemory } from "../../repositories/in-memory/SpecificationRepositoryInMemory";
-import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
+import { AppError } from "@errors/AppError";
+import { SpecificationsRepositoryInMemory } from "@modules/cars/repositories/in-memory/SpecificationRepositoryInMemory";
+import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
 import { CreateSpecificationsUseCase } from "./CreateSpecificationsUseCase";
 
 let specificationsRepositoryInMemory: ISpecificationsRepository;

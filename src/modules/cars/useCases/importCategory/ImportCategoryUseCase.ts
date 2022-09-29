@@ -1,7 +1,7 @@
-import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
+import { CategoriesRepository } from "@modules/cars/repositories/implementations/CategoriesRepository";
 import fs from "fs";
 import csvParser from "csv-parser";
-import { ICreateCategoryDTO } from "../../repositories/ICategoriesRepository";
+import { ICreateCategoryDTO } from "@modules/cars/dtos/CreateCategoryDTO";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
