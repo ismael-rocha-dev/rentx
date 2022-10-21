@@ -28,3 +28,22 @@ Somente administradores podem cadastrar especificações.
 **RN**
 Não deve ser possível cadastrar uma especificação para um carro não cadastrado.
 Não deve ser possível cadastar uma mesma especificação mais de uma vez.
+
+# Cadastro de imagens do carro
+
+**RF**
+Deve ser possível poder cadastrar imagem do carro
+
+**RNF**
+Utilizar multer para upload de arquivos
+
+**RN**
+O usuário poderá cadastrar mais de uma imagem para o mesmo carro
+
+# Aluguel de carro
+
+**RF**
+Deve ser possível cadastrar um aluguel
+
+**RN**
+O aluguel deve ter duração mínima de 24h
