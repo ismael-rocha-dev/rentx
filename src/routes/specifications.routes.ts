@@ -1,9 +1,18 @@
 import { Router } from "express";
-import { createSpecificationsController } from "../modules/cars/useCases/createSpecification";
+import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
+import { CreateSpecificationsController } from "../modules/cars/useCases/createSpecification/CreateSpecificationsController";
 
 const specificationsRouter = Router();
 
-//create specification
-specificationsRouter.post("/create", (request, response) => createSpecificationsController.handle(request, response));
+const createSpecificationsController = new CreateSpecificationsController();
+
+specificationsRouter.use(ensureAuthenticated);
+
+// Create
+specificationsRouter.post("/", createSpecificationsController.handle);
+
+// List
+
+// Update
 
 export { specificationsRouter };

@@ -1,10 +1,15 @@
-import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
+import { CategoriesRepository } from "@modules/cars/repositories/implementations/CategoriesRepository";
 import fs from "fs";
 import csvParser from "csv-parser";
-import { ICreateCategoryDTO } from "../../repositories/ICategoriesRepository";
+import { ICreateCategoryDTO } from "@modules/cars/dtos/CreateCategoryDTO";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 class ImportCategoryUseCase {
-	constructor(private categoriesRepository: CategoriesRepository) {}
+	constructor(
+		@inject("CategoriesRepository")
+		private categoriesRepository: CategoriesRepository
+	) {}
 
 	loadCategories(file): Promise<ICreateCategoryDTO[]> {
 		return new Promise((resolve, reject) => {
