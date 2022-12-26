@@ -1,9 +1,9 @@
 import { getRepository, Repository } from "typeorm";
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { User } from "../../entities/User";
-import { IUsersRepository } from "../IUsersRepository";
+import { ICreateUserDTO } from "../../../dtos/ICreateUserDTO";
+import { IUsersRepository } from "../../../repositories/IUsersRepository";
 import { hash } from "bcryptjs";
-import { IUpdateUserDTO } from "../../dtos/IUpdateUserDTO";
+import { IUpdateUserDTO } from "../../../dtos/IUpdateUserDTO";
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
 
 class UsersRepository implements IUsersRepository {
 	constructor() {
